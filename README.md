@@ -145,7 +145,7 @@ cd ProbeX
 
 python3 probex_api.py 8777
 
-xdg-open /home/liiannn/Documents/ProbeX/index.html
+xdg-open ~/ProbeX/index.html
 ```
 
 ---
