@@ -11,7 +11,8 @@ ProbeX adalah scanner deteksi dan eksploitasi web untuk CTF / lab resmi, bagian 
 1. [ProbeX — Vulnerability Scanner](#probex---vulnerability-scanner)
 2. [CachePoisonX — Deteksi & Injeksi Cache Poisoning](#cachepoisonx---deteksi--injeksi-cache-poisoning)
 3. [Cara Menjalankan Lab (tes_lab)](#cara-menjalankan-lab-tes_lab)
-4. [CHANGELOG](#changelog)
+4. [GUI + API Backend (probing lewat browser)](#gui--api-backend-probing-lewat-browser)
+5. [CHANGELOG](#changelog)
 
 ---
 
@@ -284,6 +285,51 @@ curl -s http://127.0.0.1:8899/article/demo | grep -o 'evil.test'
 
 **Kenapa (c) harus GET, bukan `curl -I`:** `HEAD` secara HTTP tidak menyimpan body. Cache yang benar tidak akan menyimpan apa pun dari request HEAD, jadi payload tidak pernah masuk.
 
+## GUI + API Backend (probing lewat browser)
+
+Jika Anda tidak nyaman menggunakan CLI, tersedia **GUI berbasis browser** (`index.html`, `style.css`, `script.js`) yang terhubung ke **backend API** (`probex_api.py`). Keduanya berbasis fungsi yang sama dengan CLI — tidak ada fitur yang terlewat.
+
+### Komponen baru
+
+| File | Fungsi |
+|------|--------|
+| `index.html` | GUI SPA — 6 halaman: Pemindai, Analisis AI, Pengaturan API, Monitor Poisoning, SSH Crack, Injeksi |
+| `style.css` | Palet "Precision Instrument Dark" dari desain Stitch |
+| `script.js` | Hubungkan GUI ke backend API via `fetch()` — deteksi & injeksi berjalan nyata (bukan simulasi) |
+| `probex_api.py` | Backend API (Python stdlib `http.server`) — endpoint `/api/detect`, `/api/inject`, `/api/events`, `/api/cache/clear`, `/api/status` |
+
+### Cara pakai GUI (tanpa harus buka terminal/CLI)
+
+```bash
+# Terminal 1 — nyalakan lab
+cd /home/liiannn/Documents/ProbeX/tes_lab
+python3 lab_cache_origin.py 8899
+
+# Terminal 2 — nyalakan backend API
+cd /home/liiannn/Documents/ProbeX
+python3 probex_api.py 8777
+
+# Terminal 3 — buka GUI di browser
+xdg-open /home/liiannn/Documents/ProbeX/index.html
+```
+
+Di GUI:
+- **Pemindai** — masukkan `http://127.0.0.1:8899/article/demo` → klik **Mulai Pindai** (deteksi read-only via `/api/detect`)
+- **Injeksi** — masukkan target → klik **Jalankan Pengujian** (injeksi cache poisoning via `/api/inject`, butuh backend aktif)
+- **Monitor Poisoning** — pantau webhook events secara real-time via `/api/events` (ambil dari `lab_cache_origin.py` di port 8899)
+
+CLI tetap bisa dipakai langsung seperti sebelumnya:
+
+```bash
+# Deteksi (read-only)
+PROBEX_CONSENT=1 python3 probex.py http://127.0.0.1:8899 --module cache-poisoning --no-safe --no-banner
+
+# Injeksi (attack mode)
+PROBEX_CONSENT=1 python3 probex.py http://127.0.0.1:8899/article/demo --cache-inject --no-safe --no-banner
+```
+
+Keduanya (GUI dan CLI) menghasilkan hasil yang sama karena memanggil modul CachePoisonX yang sama.
+
 ---
 
 ## CHANGELOG
@@ -295,14 +341,18 @@ Lihat `CHANGELOG.md` di root repository untuk riwayat versi lengkap (v1.6 s/d v1
 ## Struktur Repository
 
 ```
-/home/liiannn/Downloads/ProbeX/
+/home/liiannn/Documents/ProbeX/
 ├── README.md                    <- file ini (gabungan semua dokumentasi)
 ├── CHANGELOG.md                 <- riwayat versi
 ├── probex.py                    <- CLI utama ProbeX
+├── probex_api.py                <- Backend API untuk GUI (port 8777)
+├── index.html                   -> GUI SPA (buka di browser)
+├── style.css                    -> Palet Precision Instrument Dark
+├── script.js                    -> Logika SPA + fetch ke probex_api.py
 ├── probex/
 │   ├── core/
 │   │   ├── scanner.py           <- daftar modul (termasuk CachePoisonX)
-│   │   ├── config.py            <- konfigurasi global
+│   │   ├── config.py            <- konfigurasi global (termasuk cache_inject_*)
 │   │   ├── request_manager.py   <- manajer request dengan budget/delay
 │   │   └── reporter.py          <- generator laporan
 │   └── modules/
