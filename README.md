@@ -40,14 +40,14 @@ Flag tambahan injeksi: `--payload` (profil / path file / literal, boleh diulang)
 ### GUI (browser, tanpa perlu hapal perintah CLI)
 
 ```bash
-cd ProbeX/tes_lab
+cd ~/ProbeX/tes_lab
 python3 lab_cache_origin.py 8899
 
-cd ProbeX
+cd ~/ProbeX
 
 python3 probex_api.py 8777
 
-xdg-open /home/liiannn/Documents/ProbeX/index.html
+xdg-open ~/ProbeX/index.html
 ```
 
 Di GUI:
