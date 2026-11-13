@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# ProbeX bash wrapper — authorized CTF labs only.
+# Usage: ./ProbeX <target> [options]
+# Example: ./ProbeX http://example.com --no-safe --all-exploit
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec python3 "$SCRIPT_DIR/probex.py" "$@"

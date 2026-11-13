@@ -1,0 +1,158 @@
+{
+  "target": "https://olive-canyon.app.ngelinx.com",
+  "scan_status": "COMPLETED",
+  "timestamp": "2026-11-09T08:03:07.355762",
+  "requests_used": 128,
+  "endpoints_found": [
+    "https://olive-canyon.app.ngelinx.com",
+    "https://olive-canyon.app.ngelinx.com/robots.txt",
+    "https://olive-canyon.app.ngelinx.com/wp-admin/",
+    "https://olive-canyon.app.ngelinx.com/"
+  ],
+  "findings": [
+    {
+      "title": "Missing Security Header: Strict-Transport-Security",
+      "severity": "low",
+      "detail": "HSTS missing – enables HTTPS enforcement",
+      "evidence": ""
+    },
+    {
+      "title": "Missing Security Header: Content-Security-Policy",
+      "severity": "low",
+      "detail": "CSP missing – XSS mitigation reduced",
+      "evidence": ""
+    },
+    {
+      "title": "Missing Security Header: X-Content-Type-Options",
+      "severity": "low",
+      "detail": "X-Content-Type-Options missing (nosniff recommended)",
+      "evidence": ""
+    },
+    {
+      "title": "Missing Security Header: X-Frame-Options",
+      "severity": "low",
+      "detail": "X-Frame-Options missing – clickjacking risk",
+      "evidence": ""
+    },
+    {
+      "title": "Missing Security Header: X-XSS-Protection",
+      "severity": "low",
+      "detail": "X-XSS-Protection missing (legacy but still useful)",
+      "evidence": ""
+    },
+    {
+      "title": "Missing Security Header: Referrer-Policy",
+      "severity": "low",
+      "detail": "Referrer-Policy missing",
+      "evidence": ""
+    },
+    {
+      "title": "Missing Security Header: Permissions-Policy",
+      "severity": "low",
+      "detail": "Permissions-Policy missing",
+      "evidence": ""
+    },
+    {
+      "title": "Missing Security Header: Cross-Origin-Opener-Policy",
+      "severity": "low",
+      "detail": "COOP missing",
+      "evidence": ""
+    },
+    {
+      "title": "Missing Security Header: Cross-Origin-Resource-Policy",
+      "severity": "low",
+      "detail": "CORP missing",
+      "evidence": ""
+    },
+    {
+      "title": "Information Disclosure: Server",
+      "severity": "info",
+      "detail": "nginx/1.18.0 (Ubuntu)",
+      "evidence": ""
+    },
+    {
+      "title": "Information Disclosure: X-Powered-By",
+      "severity": "info",
+      "detail": "PHP/8.2.35",
+      "evidence": ""
+    },
+    {
+      "title": "Interesting path in robots.txt: /wp-admin/",
+      "severity": "info",
+      "detail": "Disallowed but potentially sensitive",
+      "evidence": ""
+    },
+    {
+      "title": "HTTP intermediary indicators observed",
+      "severity": "info",
+      "detail": "Response headers suggest one or more proxy/gateway layers: HTTP framing: Connection, HTTP framing: Content-Length, Server / X-Powered-By, Via. These are response-side clues only, not proof of CL.TE/TE.CL. Use Burp Repeater manually in an authorized lab; ProbeX does not send ambiguous framing requests.",
+      "evidence": ""
+    },
+    {
+      "title": "HTTP Request Smuggling (CL.TE)",
+      "severity": "high",
+      "detail": "olive-canyon.app.ngelinx.com:443 (https) may allow CL.TE request smuggling. Gateway and backend disagree on request boundaries. Smuggled request indicator: admin",
+      "evidence": "\";b\r\n1000\r\norder-bottom-color\"],[style*=\"; border-bottom-color\"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=\";border-left-color\"],[style*=\"; border-left-color\"]){border-left-style:solid}html :where([style^=border-width],[style*=\";border-width\"],[style*=\"; border-width\""
+    },
+    {
+      "title": "Open port tcp/22 (ssh)",
+      "severity": "info",
+      "detail": "nmap reports ssh OpenSSH on olive-canyon.app.ngelinx.com:tcp/22",
+      "evidence": "olive-canyon.app.ngelinx.com:tcp/22 ssh OpenSSH"
+    },
+    {
+      "title": "Open port tcp/80 (http)",
+      "severity": "info",
+      "detail": "nmap reports http nginx on olive-canyon.app.ngelinx.com:tcp/80",
+      "evidence": "olive-canyon.app.ngelinx.com:tcp/80 http nginx"
+    },
+    {
+      "title": "Open port tcp/111 (rpcbind)",
+      "severity": "info",
+      "detail": "nmap reports rpcbind  on olive-canyon.app.ngelinx.com:tcp/111",
+      "evidence": "olive-canyon.app.ngelinx.com:tcp/111 rpcbind"
+    },
+    {
+      "title": "Open port tcp/443 (http)",
+      "severity": "info",
+      "detail": "nmap reports http nginx on olive-canyon.app.ngelinx.com:tcp/443",
+      "evidence": "olive-canyon.app.ngelinx.com:tcp/443 http nginx"
+    },
+    {
+      "title": "Open port tcp/3128 (http)",
+      "severity": "info",
+      "detail": "nmap reports http Proxmox Virtual Environment REST API on olive-canyon.app.ngelinx.com:tcp/3128",
+      "evidence": "olive-canyon.app.ngelinx.com:tcp/3128 http Proxmox Virtual Environment REST API"
+    }
+  ],
+  "flags_found": [],
+  "technologies": [
+    "nginx",
+    "PHP/8.2.35",
+    "Nginx",
+    "PHP",
+    "WordPress"
+  ],
+  "extra": {
+    "workflow_analysis": {
+      "pages_inspected": 1,
+      "forms": [],
+      "parameters": {},
+      "identity_hints": [],
+      "javascript_endpoints": [],
+      "proxy_headers": {
+        "Via": "1.1 Caddy",
+        "HTTP framing: Content-Length": "4491",
+        "HTTP framing: Connection": "close",
+        "Server / X-Powered-By": "nginx/1.18.0 (Ubuntu) / PHP/8.2.35"
+      },
+      "session_note": "The shared HTTP session retains same-origin cookies during this scan. Form submissions are not performed."
+    },
+    "smuggling": {
+      "technique": "CL.TE",
+      "first_response": "HTTP/1.1 200 OK\r\nServer: nginx/1.18.0 (Ubuntu)\r\nDate: Mon, 09 Nov 2026 01:02:11 GMT\r\nContent-Type: text/html; charset=UTF-8\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\nLink: <http://olive-canyon.app.ngelinx.com/wp-json/>; rel=\"https://api.w.org/\"\r\nVary: Accept-Encoding\r\nVia: 1.1 Caddy\r\nX-Powered-By: PHP/8.2.35\r\n\r\neba\r\n<!doctype html>\n<html lang=\"en-US\">\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n\t<meta name=\"description\" cont",
+      "second_response": "\";b\r\n1000\r\norder-bottom-color\"],[style*=\"; border-bottom-color\"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=\";border-left-color\"],[style*=\"; border-left-color\"]){border-left-style:solid}html :where([style^=border-width],[style*=\";border-width\"],[style*=\"; border-width\"]){border-style:solid}html :where([style^=border-top-width],[style*=\";border-top-width\"],[style*=\"; border-top-width\"]){border-top-style:solid}html :where([style^=border-right-width],[style*=\";border-right-width\"],[style*=\"; border-right-width\"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=\";border-bottom-width\"],[style*=\"; border-bottom-width\"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=\";border-left-width\"],[style*=\"; border-left-width\"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--",
+      "indicator": "admin"
+    }
+  }
+}

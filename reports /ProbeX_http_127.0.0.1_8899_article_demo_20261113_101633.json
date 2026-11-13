@@ -1,0 +1,48 @@
+{
+  "target": "http://127.0.0.1:8899/article/demo",
+  "scan_status": "COMPLETED",
+  "timestamp": "2026-11-13T10:16:33.479487",
+  "requests_used": 3,
+  "endpoints_found": [
+    "http://127.0.0.1:8899/article/demo"
+  ],
+  "findings": [
+    {
+      "title": "Cache poisoning injector — tidak berhasil",
+      "severity": "info",
+      "detail": "Verdikt: CACHE_WARM. Alasan: cache sudah menyimpan salinan bersih untuk URL ini sebelum injeksi. Payload tidak masuk. Perlu tunggu TTL habis, atau kosongkan cache target lebih dulu.",
+      "evidence": "",
+      "url": "http://127.0.0.1:8899/article/demo",
+      "method": "GET",
+      "parameter": "X-Forwarded-Host",
+      "evidence_snippet": ""
+    }
+  ],
+  "risk_summary": {
+    "risk_level": "SAFE",
+    "risk_score": 0,
+    "severity_breakdown": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 1
+    },
+    "thresholds": {
+      "critical": 30,
+      "high": 15,
+      "medium": 6,
+      "low": 1,
+      "safe": 0
+    },
+    "weights": {
+      "critical": 10,
+      "high": 6,
+      "medium": 3,
+      "low": 1,
+      "info": 0
+    }
+  },
+  "technologies": [],
+  "extra": {}
+}
