@@ -109,7 +109,10 @@ class _Handler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
-        self.wfile.write(body)
+        try:
+            self.wfile.write(body)
+        except BrokenPipeError:
+            pass  # Klien sudah putus koneksi, abaikan
 
     def do_OPTIONS(self):
         self._send_json({"ok": True}, 200)
