@@ -28,12 +28,10 @@ Keduanya memanggil modul CachePoisonX yang sama, hasilnya identik.
 ### CLI (terminal)
 
 ```bash
-cd /home/liiannn/Documents/ProbeX
+cd ProbeX
 
-# Deteksi read-only
 PROBEX_CONSENT=1 python3 probex.py http://127.0.0.1:8899 --module cache-poisoning --no-safe --no-banner
 
-# Injeksi cache poisoning (attack mode)
 PROBEX_CONSENT=1 python3 probex.py http://127.0.0.1:8899/article/demo --cache-inject --no-safe --no-banner
 ```
 
@@ -42,15 +40,13 @@ Flag tambahan injeksi: `--payload` (profil / path file / literal, boleh diulang)
 ### GUI (browser, tanpa perlu hapal perintah CLI)
 
 ```bash
-# Terminal 1 — nyalakan lab
-cd /home/liiannn/Documents/ProbeX/tes_lab
+cd ProbeX/tes_lab
 python3 lab_cache_origin.py 8899
 
-# Terminal 2 — nyalakan backend API
-cd /home/liiannn/Documents/ProbeX
+cd ProbeX
+
 python3 probex_api.py 8777
 
-# Terminal 3 — buka GUI di browser
 xdg-open /home/liiannn/Documents/ProbeX/index.html
 ```
 
@@ -142,15 +138,13 @@ Jika tidak nyaman pakai CLI, gunakan GUI yang terhubung ke backend API.
 ### Cara pakai
 
 ```bash
-# Terminal 1 — lab
-cd /home/liiannn/Documents/ProbeX/tes_lab
+cd ProbeX/tes_lab
 python3 lab_cache_origin.py 8899
 
-# Terminal 2 — backend API
-cd /home/liiannn/Documents/ProbeX
+cd ProbeX
+
 python3 probex_api.py 8777
 
-# Terminal 3 — GUI
 xdg-open /home/liiannn/Documents/ProbeX/index.html
 ```
 
@@ -161,15 +155,14 @@ xdg-open /home/liiannn/Documents/ProbeX/index.html
 Lab server ada di `tes_lab/lab_cache_origin.py` (origin + cache + webhook receiver, port 8899).
 
 ```bash
-cd /home/liiannn/Documents/ProbeX/tes_lab
+cd ProbeX/tes_lab
 python3 lab_cache_origin.py 8899
-```
 
 Reset sebelum demo:
-```bash
+
 curl -s http://127.0.0.1:8899/_cache/clear
 curl -s http://127.0.0.1:8899/_events/clear
-```
+
 
 Endpoint lab:
 - `GET /article/<slug>` — halaman artikel (di-cache)
