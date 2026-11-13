@@ -48,8 +48,8 @@ class Config:
     )
     ssrf_callback: Optional[str] = None
     # Cache injection (attack mode) overrides
-    cache_inject_payload: Optional[str] = None
-    cache_inject_header: Optional[str] = None
+    cache_inject_payload: Optional[List[str]] = None
+    cache_inject_header: Optional[List[str]] = None
     max_redirects: int = 3
     stop_on_429: bool = True
     request_budget_remaining: int = field(init=False)
