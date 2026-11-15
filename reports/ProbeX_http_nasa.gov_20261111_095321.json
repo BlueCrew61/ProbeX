@@ -1,0 +1,166 @@
+{
+  "target": "http://nasa.gov",
+  "scan_status": "COMPLETED",
+  "timestamp": "2026-11-11T09:53:21.223500",
+  "requests_used": 173,
+  "endpoints_found": [
+    "http://nasa.gov",
+    "http://nasa.gov/"
+  ],
+  "findings": [
+    {
+      "title": "Missing Security Header: Strict-Transport-Security",
+      "severity": "low",
+      "detail": "HSTS missing – enables HTTPS enforcement",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Strict-Transport-Security"
+    },
+    {
+      "title": "Missing Security Header: Content-Security-Policy",
+      "severity": "low",
+      "detail": "CSP missing – XSS mitigation reduced",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Content-Security-Policy"
+    },
+    {
+      "title": "Missing Security Header: X-Content-Type-Options",
+      "severity": "low",
+      "detail": "X-Content-Type-Options missing (nosniff recommended)",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "X-Content-Type-Options"
+    },
+    {
+      "title": "Missing Security Header: X-Frame-Options",
+      "severity": "low",
+      "detail": "X-Frame-Options missing – clickjacking risk",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "X-Frame-Options"
+    },
+    {
+      "title": "Missing Security Header: X-XSS-Protection",
+      "severity": "low",
+      "detail": "X-XSS-Protection missing (legacy but still useful)",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "X-XSS-Protection"
+    },
+    {
+      "title": "Missing Security Header: Referrer-Policy",
+      "severity": "low",
+      "detail": "Referrer-Policy missing",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Referrer-Policy"
+    },
+    {
+      "title": "Missing Security Header: Permissions-Policy",
+      "severity": "low",
+      "detail": "Permissions-Policy missing",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Permissions-Policy"
+    },
+    {
+      "title": "Missing Security Header: Cross-Origin-Opener-Policy",
+      "severity": "low",
+      "detail": "COOP missing",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Cross-Origin-Opener-Policy"
+    },
+    {
+      "title": "Missing Security Header: Cross-Origin-Resource-Policy",
+      "severity": "low",
+      "detail": "CORP missing",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Cross-Origin-Resource-Policy"
+    },
+    {
+      "title": "Information Disclosure: Server",
+      "severity": "info",
+      "detail": "nginx",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "nginx"
+    },
+    {
+      "title": "HTTP intermediary indicators observed",
+      "severity": "info",
+      "detail": "Response headers suggest one or more proxy/gateway layers: HTTP framing: Connection, HTTP framing: Content-Length. These are response-side clues only, not proof of CL.TE/TE.CL. Use Burp Repeater manually in an authorized lab; ProbeX does not send ambiguous framing requests.",
+      "evidence": "",
+      "url": "http://nasa.gov",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "HTTP framing: Connection, HTTP framing: Content-Length"
+    }
+  ],
+  "risk_summary": {
+    "risk_level": "MEDIUM RISK",
+    "risk_score": 9,
+    "severity_breakdown": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 9,
+      "info": 2
+    },
+    "thresholds": {
+      "critical": 30,
+      "high": 15,
+      "medium": 6,
+      "low": 1,
+      "safe": 0
+    },
+    "weights": {
+      "critical": 10,
+      "high": 6,
+      "medium": 3,
+      "low": 1,
+      "info": 0
+    }
+  },
+  "technologies": [
+    "nginx",
+    "Nginx"
+  ],
+  "extra": {
+    "workflow_analysis": {
+      "pages_inspected": 1,
+      "forms": [],
+      "parameters": {},
+      "identity_hints": [],
+      "javascript_endpoints": [],
+      "proxy_headers": {
+        "HTTP framing: Content-Length": "162",
+        "HTTP framing: Connection": "close"
+      },
+      "session_note": "The shared HTTP session retains same-origin cookies during this scan. Form submissions are not performed."
+    },
+    "accessible_hosts": []
+  }
+}

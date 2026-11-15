@@ -1,0 +1,193 @@
+{
+  "target": "http://localhost:9002",
+  "scan_status": "COMPLETED",
+  "timestamp": "2026-11-13T09:15:29.637137",
+  "requests_used": 126,
+  "endpoints_found": [
+    "http://localhost:9002",
+    "http://localhost:9002/",
+    "http://localhost:9002/article/masa-depan-ai-agen-rekayasa-perangkat-lunak-2026",
+    "http://localhost:9002/article/migrasi-monolitik-ke-micro-frontend-skala-10-juta-pengguna",
+    "http://localhost:9002/article/membangun-zero-trust-architecture-cloud-multi-region",
+    "http://localhost:9002/article/mengapa-rust-menjadi-standar-baru-high-throughput-microservices",
+    "http://localhost:9002/article/design-system-driven-development-sinkronisasi-figma-web",
+    "http://localhost:9002/article/kultur-asynchronous-remote-first-lintas-4-zona-waktu",
+    "http://localhost:9002/article/strategi-kubernetes-cost-optimization-menghemat-40-persen",
+    "http://localhost:9002/article/webassembly-di-edge-network-komputasi-berat-ke-user",
+    "http://localhost:9002/author/kevin-pramudya",
+    "http://localhost:9002/author/sarah-wijaya",
+    "http://localhost:9002/author/dimas-ardiansyah",
+    "http://localhost:9002/author/jessica-tan"
+  ],
+  "findings": [
+    {
+      "title": "Missing Security Header: Strict-Transport-Security",
+      "severity": "low",
+      "detail": "HSTS missing – enables HTTPS enforcement",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Strict-Transport-Security"
+    },
+    {
+      "title": "Missing Security Header: Content-Security-Policy",
+      "severity": "low",
+      "detail": "CSP missing – XSS mitigation reduced",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Content-Security-Policy"
+    },
+    {
+      "title": "Missing Security Header: X-Content-Type-Options",
+      "severity": "low",
+      "detail": "X-Content-Type-Options missing (nosniff recommended)",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "X-Content-Type-Options"
+    },
+    {
+      "title": "Missing Security Header: X-Frame-Options",
+      "severity": "low",
+      "detail": "X-Frame-Options missing – clickjacking risk",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "X-Frame-Options"
+    },
+    {
+      "title": "Missing Security Header: X-XSS-Protection",
+      "severity": "low",
+      "detail": "X-XSS-Protection missing (legacy but still useful)",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "X-XSS-Protection"
+    },
+    {
+      "title": "Missing Security Header: Referrer-Policy",
+      "severity": "low",
+      "detail": "Referrer-Policy missing",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Referrer-Policy"
+    },
+    {
+      "title": "Missing Security Header: Permissions-Policy",
+      "severity": "low",
+      "detail": "Permissions-Policy missing",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Permissions-Policy"
+    },
+    {
+      "title": "Missing Security Header: Cross-Origin-Opener-Policy",
+      "severity": "low",
+      "detail": "COOP missing",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Cross-Origin-Opener-Policy"
+    },
+    {
+      "title": "Missing Security Header: Cross-Origin-Resource-Policy",
+      "severity": "low",
+      "detail": "CORP missing",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Cross-Origin-Resource-Policy"
+    },
+    {
+      "title": "Information Disclosure: X-Powered-By",
+      "severity": "info",
+      "detail": "Express",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "Express"
+    },
+    {
+      "title": "HTTP intermediary indicators observed",
+      "severity": "info",
+      "detail": "Response headers suggest one or more proxy/gateway layers: HTTP framing: Connection, HTTP framing: Content-Length. These are response-side clues only, not proof of CL.TE/TE.CL. Use Burp Repeater manually in an authorized lab; ProbeX does not send ambiguous framing requests.",
+      "evidence": "",
+      "url": "http://localhost:9002",
+      "method": "GET",
+      "parameter": "",
+      "evidence_snippet": "HTTP framing: Connection, HTTP framing: Content-Length"
+    }
+  ],
+  "risk_summary": {
+    "risk_level": "MEDIUM RISK",
+    "risk_score": 9,
+    "severity_breakdown": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 9,
+      "info": 2
+    },
+    "thresholds": {
+      "critical": 30,
+      "high": 15,
+      "medium": 6,
+      "low": 1,
+      "safe": 0
+    },
+    "weights": {
+      "critical": 10,
+      "high": 6,
+      "medium": 3,
+      "low": 1,
+      "info": 0
+    }
+  },
+  "technologies": [
+    "Express",
+    "Node.js/Express"
+  ],
+  "extra": {
+    "workflow_analysis": {
+      "pages_inspected": 6,
+      "forms": [],
+      "parameters": {},
+      "identity_hints": [],
+      "javascript_endpoints": [],
+      "proxy_headers": {
+        "HTTP framing: Content-Length": "23575",
+        "HTTP framing: Connection": "close"
+      },
+      "session_note": "The shared HTTP session retains same-origin cookies during this scan. Form submissions are not performed."
+    },
+    "accessible_hosts": [
+      {
+        "host": "localhost",
+        "url": "http://localhost",
+        "status": 200,
+        "title": "Library",
+        "server": "Apache/2.4.41 (Ubuntu)"
+      },
+      {
+        "host": "localhost",
+        "url": "http://localhost:8080",
+        "status": 200,
+        "title": "Under Maintenance",
+        "server": "Apache/2.4.41 (Ubuntu)"
+      }
+    ]
+  }
+}
