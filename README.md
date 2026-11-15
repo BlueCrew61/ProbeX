@@ -179,7 +179,7 @@ Buka `http://127.0.0.1:8899/_monitor` di browser untuk melihat webhook masuk sec
 ## Struktur Repository
 
 ```
-/home/liiannn/Documents/ProbeX/
+~/ProbeX/
 ├── README.md                    <- file ini
 ├── CHANGELOG.md                 <- riwayat versi
 ├── probex.py                    <- CLI utama ProbeX
