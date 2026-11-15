@@ -41,6 +41,8 @@ passwords.txt
 *.token
 secrets/
 
+rockyou
+
 # Reports / scan output (berisi data target)
 reports/
 *.json
